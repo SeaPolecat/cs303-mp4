@@ -1,3 +1,4 @@
+'use server';
 const URL = 'https://api.harvardartmuseums.org/object?sort=random&fields=url,primaryimageurl&q=url:*%20AND%20imagepermissionlevel:0&hasimage=1';
 const API_KEY = process.env.API_KEY;
 
