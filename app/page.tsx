@@ -20,7 +20,7 @@ export default function Home() {
                 How many artworks?
             </h1>
 
-            <p className={"text-red-600"}>
+            <p className={"text-gray-500"}>
                 {!isNaN(size) && size > 0 && size <= 100 ? '' : 'Enter a number between 1-100'}
             </p>
 
