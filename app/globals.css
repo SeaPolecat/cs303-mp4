@@ -3,10 +3,10 @@
 * {
     box-sizing: border-box;
     overscroll-behavior: none;
-    /*margin: 0;*/ /* i kind of like the default margins lol */
 }
 
 body {
+    /* code below is from an online CSS background generator */
     /* https://www.magicpattern.design/tools/css-backgrounds */
     background-color: #f4f7e6;
     opacity: 1;

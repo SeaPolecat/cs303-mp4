@@ -1,25 +1,28 @@
 'use client';
 import {useState} from "react";
-import {TextField, Button} from "@mui/material";
+import {TextField} from "@mui/material";
 import {useRouter} from "next/navigation";
 
 
 export default function Home() {
     const [size, setSize] = useState(0);
-
     const router = useRouter();
 
-    function test() {
-        if (!isNaN(size)) {
-            router.push('/artworks/5');
+    function goToGallery() {
+        if (!isNaN(size) && size > 0 && size <= 100) {
+            router.push(`/gallery/${size}`);
         }
     }
 
     return (
-        <div className={"flex flex-col items-center justify-center bg-sky-200 w-fit m-auto mt-10 rounded-2xl p-10"}>
-            <h1 className={"text-2xl m-5 text-gray-500 font-serif"}>How many artworks?</h1>
+        <div className={"flex flex-col items-center justify-center bg-amber-200 w-fit m-auto mt-40 rounded-2xl px-10 py-8"}>
+            <h1 className={"text-2xl text-amber-900 font-mono italic mb-10"}>
+                How many artworks?
+            </h1>
 
-            <p className={"text-red-600"}>{isNaN(size) ? 'Please enter a number' : ''}</p>
+            <p className={"text-red-600"}>
+                {!isNaN(size) && size > 0 && size <= 100 ? '' : 'Enter a number between 1-100'}
+            </p>
 
             <TextField
                 variant={"filled"}
@@ -27,7 +30,12 @@ export default function Home() {
                 onChange={e => setSize(Number(e.target.value))}
             />
 
-            <Button onClick={() => test()}>GO!</Button>
+            <button
+                className={"bg-sky-300 hover:bg-sky-400 transition text-xl text-white rounded-xl font-mono cursor-pointer py-2 px-5 mt-10"}
+                onClick={() => goToGallery()}
+            >
+                Create My Gallery!
+            </button>
         </div>
     );
 }
