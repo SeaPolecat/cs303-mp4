@@ -3,6 +3,9 @@ import {getArtworks} from "@/api/getArtworks";
 import ArtworkListView from "@/components/ArtworkListView";
 
 
+export const dynamic = 'force-static';
+
+
 export default async function Gallery({params}: {params: Promise<{size: string}>}) {
     const {size} = await params;
     const artworks = await getArtworks(Number(size));
