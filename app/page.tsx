@@ -2,14 +2,15 @@
 import {useState} from "react";
 import {TextField} from "@mui/material";
 import {useRouter} from "next/navigation";
+import {validate} from "@/lib/validate";
 
 
 export default function Home() {
-    const [size, setSize] = useState(0);
+    const [size, setSize] = useState('');
     const router = useRouter();
 
     function goToGallery() {
-        if (!isNaN(size) && size > 0 && size <= 100) {
+        if (validate(size)) {
             router.push(`/gallery/${size}`);
         }
     }
@@ -20,14 +21,14 @@ export default function Home() {
                 How many artworks?
             </h1>
 
-            <p className={"text-gray-500"}>
-                {!isNaN(size) && size > 0 && size <= 100 ? '' : 'Enter a number between 1-100'}
+            <p className={"text-red-600"}>
+                {!size || validate(size) ? '' : 'Enter a number between 1-100'}
             </p>
 
             <TextField
                 variant={"filled"}
                 placeholder={"Enter a number"}
-                onChange={e => setSize(Number(e.target.value))}
+                onChange={e => setSize(e.target.value)}
             />
 
             <button

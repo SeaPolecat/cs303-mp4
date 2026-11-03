@@ -1,12 +1,15 @@
 'use server';
+import {validate} from "@/lib/validate";
+
+
 const URL = 'https://api.harvardartmuseums.org/object?sort=random&fields=url,primaryimageurl&q=url:*%20AND%20imagepermissionlevel:0&hasimage=1';
 const API_KEY = process.env.API_KEY;
 
 
-export async function getArtworks(size: number) {
+export async function getArtworks(size: string) {
 
     // don't call the API if the user puts an insensible value in the URL
-    if (size < 0 || size > 100) {
+    if (!validate(size)) {
         return []
     }
 
